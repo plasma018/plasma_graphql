@@ -1,0 +1,73 @@
+type Query {
+    HelloWorld: String!
+    AllMessage: [String]
+    getLocation: [Location]
+    getWeather(id: ID!): Weather
+}
+
+type Mutation {
+    PostMessage(message: String!):String!
+    AddPerson(input: PeopleInput!):People! 
+}
+
+input PeopleInput {
+    id: ID!
+    name: String!
+    age: Int!
+    height: Int!
+    weight: Int!
+}
+
+type People {
+    id: ID!
+    name: String!
+    age: Int!
+    height: Int!
+    weight: Int!
+}
+
+type Location {
+    id: ID!
+    name: String!
+    towns:[Town]
+    getTown(id: ID!):Town
+}
+
+type Town {
+    id: ID!
+    name: String!
+    postal: String
+    cwb_id: String!
+    position: Position
+    img: String!
+}
+
+type Position {
+    lat: Float!
+    lng: Float!
+    zoom: Int
+}
+
+type Weather {
+    name(id: ID!): String!
+    img: String!
+    desc: String!
+    temperature: Int!
+    felt_air_temp: Int!
+    humidity: Int!
+    rainfall: Int!
+    sunrise: String!
+    sunset: String!
+    at: String!
+}
+
+type Subscription {
+  postAdded: Boolean
+  sendSecond: People
+}
+
+type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+}
